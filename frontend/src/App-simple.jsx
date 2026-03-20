@@ -7,7 +7,7 @@ function App() {
   const [character, setCharacter] = useState(null);
   const [balance, setBalance] = useState('0');
 
-  // 钱包连接
+  // 简化的钱包连接
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
@@ -15,11 +15,8 @@ function App() {
         const address = accounts[0];
         
         setWallet({ address });
-        
-        // 获取 SHRIMP 余额（模拟）
         setBalance('1000');
         
-        // 创建默认角色
         if (!character) {
           setCharacter({
             name: '小聋虾',
@@ -50,7 +47,6 @@ function App() {
   const battle = async () => {
     if (!character) return;
 
-    // 简单的战斗模拟
     const enemyPower = Math.floor(Math.random() * 50) + 30;
     const playerPower = character.stats.strength + character.stats.agility + character.level * 5;
 
@@ -76,7 +72,6 @@ function App() {
       });
 
       setBalance(prev => (parseInt(prev) + shrimpGain).toString());
-
       alert(`🎉 胜利！获得 ${expGain} 经验和 ${shrimpGain} SHRIMP！`);
     } else {
       alert(`💀 战败了...敌人战力 ${enemyPower}，你的战力 ${playerPower}`);
@@ -98,7 +93,6 @@ function App() {
 
   return (
     <div className="container">
-      {/* 头部 */}
       <div className="header">
         <h1>🦐 小聋虾链游 - Shrimp RPG</h1>
         <div className="wallet-info">
@@ -121,7 +115,6 @@ function App() {
         </div>
       </div>
 
-      {/* 导航栏 */}
       {wallet && (
         <div className="navbar">
           <div
@@ -157,7 +150,6 @@ function App() {
         </div>
       )}
 
-      {/* 页面内容 */}
       {!wallet ? (
         <div className="game-grid">
           <div className="game-card">
@@ -170,7 +162,6 @@ function App() {
               开始冒险！
             </button>
           </div>
-
           <div className="game-card">
             <h3>⭐ 游戏特色</h3>
             <ul style={{ textAlign: 'left', color: '#666', lineHeight: '2' }}>
@@ -181,7 +172,6 @@ function App() {
               <li>💰 Play-to-Earn</li>
             </ul>
           </div>
-
           <div className="game-card">
             <h3>🎯 游戏目标</h3>
             <p>
