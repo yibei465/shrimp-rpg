@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// 内存数据存储（简单版）
+// 内存数据存储
 let data = {
   users: [],
   characters: [],
